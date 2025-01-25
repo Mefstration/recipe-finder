@@ -3,12 +3,15 @@ import axios from 'axios';
 
 function App() {
   const [query, setQuery] = useState(''); // For the user's search input
+  const [diet, setDiet] = useState(''); // For the dietary filter
   const [recipes, setRecipes] = useState([]); // To store recipe results
 
   const fetchRecipes = () => {
     const APP_ID = 'cd40fbf9'; // Replace with your App ID
     const APP_KEY = '55ac34301337b8fb33eac2b9ec6cd4fd'; // Replace with your App Key
-    const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`;
+    const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}${
+      diet ? `&health=${diet}` : ''
+    }`;
 
     axios
       .get(url)
@@ -26,6 +29,18 @@ function App() {
         onChange={e => setQuery(e.target.value)}
         style={{ marginRight: '10px', padding: '5px', fontSize: '16px' }}
       />
+      <select
+        value={diet}
+        onChange={e => setDiet(e.target.value)}
+        style={{ marginRight: '10px', padding: '5px', fontSize: '16px' }}
+      >
+        <option value="">No Filter</option>
+        <option value="vegan">Vegan</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="gluten-free">Gluten-Free</option>
+        <option value="dairy-free">Dairy-Free</option>
+        <option value="keto">Keto</option>
+      </select>
       <button onClick={fetchRecipes} style={{ padding: '5px 10px', fontSize: '16px' }}>
         Search
       </button>
@@ -45,5 +60,6 @@ function App() {
 }
 
 export default App;
+
 
 
