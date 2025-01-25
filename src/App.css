@@ -55,3 +55,21 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.recipe-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.recipe-card h3 {
+  color: #333;
+  font-size: 1.5em;
+}
+
+.recipe-card a {
+  color: #007bff;
+  text-decoration: underline;
+}

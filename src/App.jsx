@@ -45,16 +45,46 @@ function App() {
         Search
       </button>
       <div style={{ marginTop: '20px' }}>
-        {recipes.map((recipe, index) => (
-          <div key={index} style={{ marginBottom: '20px' }}>
-            <h3>{recipe.recipe.label}</h3>
-            <img src={recipe.recipe.image} alt={recipe.recipe.label} style={{ width: '200px' }} />
-            <p>
-              <strong>Ingredients:</strong> {recipe.recipe.ingredientLines.join(', ')}
-            </p>
-          </div>
+  {recipes.map((recipe, index) => (
+    <div
+      key={index}
+      style={{
+        marginBottom: '20px',
+        border: '1px solid #ccc',
+        padding: '15px',
+        borderRadius: '10px',
+      }}
+    >
+      <h3>{recipe.recipe.label}</h3>
+      <img
+        src={recipe.recipe.image}
+        alt={recipe.recipe.label}
+        style={{ width: '200px', marginBottom: '10px' }}
+      />
+      
+      <p><strong>Ingredients:</strong></p>
+      <ol>
+        {recipe.recipe.ingredientLines.map((ingredient, i) => (
+          <li key={i}>{ingredient}</li>
         ))}
-      </div>
+      </ol>
+
+      <p><strong>Instructions:</strong></p>
+      <p>
+        Follow these step-by-step instructions at:{" "}
+        <a
+          href={recipe.recipe.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "blue", textDecoration: "underline" }}
+        >
+          Full Recipe Instructions
+        </a>
+      </p>
+    </div>
+  ))}
+</div>
+
     </div>
   );
 }
