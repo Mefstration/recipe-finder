@@ -75,6 +75,8 @@ function App() {
         <option value="">No Filter</option>
         <option value="italian">Italian</option>
         <option value="mexican">Mexican</option>
+        <option value="french">French</option>
+        <option value="greek">Greek</option>
         <option value="indian">Indian</option>
         <option value="chinese">Chinese</option>
         <option value="japanese">Japanese</option>
